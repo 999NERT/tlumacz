@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tłumacz Mangi/Manhwy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tłumacz Mangi i Manhwy</h1>
+            <p class="subtitle">Prześlij obrazek z angielskim tekstem, a my przetłumaczymy go na polski</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h3>Prześlij obrazek</h3>
+                    <p>Przeciągnij i upuść lub kliknij, aby wybrać plik</p>
+                    <p class="file-types">Obsługiwane formaty: JPG, PNG, GIF</p>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                </div>
+                <button id="translateBtn" class="translate-btn" disabled>Przetłumacz obrazek</button>
+                
+                <div class="api-key-section">
+                    <h3>Konfiguracja API</h3>
+                    <div class="api-input">
+                        <label for="apiKey">Klucz API (opcjonalny):</label>
+                        <input type="text" id="apiKey" placeholder="Wprowadź klucz API jeśli posiadasz">
+                    </div>
+                    <div class="api-input">
+                        <label for="apiUrl">URL API:</label>
+                        <select id="apiUrl">
+                            <option value="https://libretranslate.com/translate">LibreTranslate (domyślny)</option>
+                            <option value="https://api.mymemory.translated.net/get">MyMemory API</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="results-section">
+                <div class="result-container">
+                    <div class="image-container">
+                        <h3>Oryginalny obrazek</h3>
+                        <div id="originalImage" class="image-placeholder">
+                            <p>Obraz pojawi się tutaj</p>
+                        </div>
+                    </div>
+                    
+                    <div class="translation-container">
+                        <h3>Przetłumaczony tekst</h3>
+                        <div id="translationResult" class="translation-placeholder">
+                            <p>Tutaj pojawi się przetłumaczony tekst</p>
+                        </div>
+                        <div class="translation-controls">
+                            <button id="copyTextBtn" class="control-btn" disabled>Kopiuj tekst</button>
+                            <button id="editTextBtn" class="control-btn" disabled>Edytuj tekst</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="translated-image-container">
+                    <h3>Przetłumaczony obrazek</h3>
+                    <div id="translatedImage" class="image-placeholder">
+                        <p>Tutaj pojawi się obrazek z przetłumaczonym tekstem</p>
+                    </div>
+                    <div class="translation-controls">
+                        <button id="downloadBtn" class="control-btn" disabled>Pobierz obrazek</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>Jak korzystać z tłumacza?</h3>
+            <ol>
+                <li>Prześlij obrazek z mangi lub manhwy zawierający angielski tekst</li>
+                <li>Opcjonalnie wprowadź klucz API jeśli korzystasz z płatnej usługi</li>
+                <li>Kliknij przycisk "Przetłumacz obrazek"</li>
+                <li>Poczekaj na przetworzenie obrazu i tłumaczenie</li>
+                <li>Otrzymasz przetłumaczony tekst oraz obrazek z polskim tekstem</li>
+            </ol>
+            
+            <div class="api-info">
+                <h4>Informacje o API</h4>
+                <p>Strona używa LibreTranslate API do tłumaczenia tekstu. Jest to darmowe API z limitem 1000 znaków na żądanie.</p>
+                <p>Jeśli potrzebujesz tłumaczyć większe ilości tekstu, zalecamy użycie własnej instancji LibreTranslate lub innego API.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Tłumacz Mangi &copy; 2023 | Stworzono dla miłośników komiksów</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
